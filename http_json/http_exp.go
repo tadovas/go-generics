@@ -49,7 +49,7 @@ func (f JsonHandlerFunc) HandleJson(input SomeStruct) HttpResponse {
 	return f(input)
 }
 
-func HandleJson[I Validator, R Response](h JsonHandler[I, R]) http.HandlerFunc {
+func HandleJson[I Validator, R Response, H JsonHandler[I, R]](h H) http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
 		fmt.Println("Handler hit!")
 		input := new(I)

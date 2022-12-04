@@ -16,7 +16,7 @@ func runMe() error {
 	var h http_json.JsonHandlerFunc = func(input http_json.SomeStruct) http_json.HttpResponse {
 		return http_json.HttpResponse{Code: http.StatusOK}
 	}
-
+	fmt.Println("Will serve you now")
 	return http.Serve(l, http_json.HandleJson[http_json.SomeStruct, http_json.HttpResponse](h))
 }
 
